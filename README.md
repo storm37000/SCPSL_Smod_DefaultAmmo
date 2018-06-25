@@ -1,1 +1,0 @@
-# SCPSL_Smod_DefaultAmmo

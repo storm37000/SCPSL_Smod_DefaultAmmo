@@ -1,0 +1,4 @@
+
+*.csproj
+Properties/AssemblyInfo.cs
+obj/*
