@@ -17,7 +17,7 @@ namespace DefaultAmmo
         SmodMinor = 1,
         SmodRevision = 21
         )]
-    class DefaultAmmo : Plugin
+    class DefaultAmmoPlugin : Plugin
     {
         public override void OnDisable()
         {
