@@ -4,13 +4,13 @@ using Smod2.Events;
 using Smod2.EventHandlers;
 using System.Threading;
 
-namespace Smod.TestPlugin
+namespace DefaultAmmo
 {
     class EventHandler : IEventHandlerSpawn
     {
-        private Plugin plugin;
+        private DefaultAmmoPlugin plugin;
 
-        public EventHandler(Plugin plugin)
+        public EventHandler(DefaultAmmoPlugin plugin)
         {
             this.plugin = plugin;
         }
