@@ -8,7 +8,7 @@ namespace defaultammo
 {
     class EventHandler : IEventHandlerSpawn
     {
-        private Plugin plugin;
+        private Main plugin;
 
         public EventHandler(Main plugin)
         {
@@ -17,8 +17,8 @@ namespace defaultammo
 
         public void OnSpawn(PlayerSpawnEvent ev)
         {
-            Thread plyjoindelaythread = new Thread(new ThreadStart(() => new playerjoindelaythread(this.plugin,ev)));
-            plyjoindelaythread.Start();
-        }
+			Thread plyjoindelaythread = new Thread(new ThreadStart(() => new playerjoindelaythread(this.plugin, ev.Player)));
+			plyjoindelaythread.Start();
+		}
     }
 }
