@@ -4,7 +4,7 @@ using Smod2.Attributes;
 using Smod2.Events;
 using Smod2.EventHandlers;
 
-namespace Smod.TestPlugin
+namespace defaultammo
 {
     [PluginDetails(
         author = "storm37000",
@@ -16,7 +16,7 @@ namespace Smod.TestPlugin
         SmodMinor = 1,
         SmodRevision = 0
         )]
-    class Default : Plugin
+    class Main : Plugin
     {
         public override void OnDisable()
         {

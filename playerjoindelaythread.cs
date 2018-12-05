@@ -3,7 +3,7 @@ using Smod2;
 using Smod2.API;
 using Smod2.Events;
 
-namespace Smod.TestPlugin
+namespace defaultammo
 {
     class playerjoindelaythread
     {
