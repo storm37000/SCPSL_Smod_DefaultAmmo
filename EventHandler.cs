@@ -6,19 +6,19 @@ using System.Threading;
 
 namespace defaultammo
 {
-    class EventHandler : IEventHandlerSpawn
-    {
-        private Main plugin;
+	class EventHandler : IEventHandlerSpawn
+	{
+		private Main plugin;
 
-        public EventHandler(Main plugin)
-        {
-            this.plugin = plugin;
-        }
+		public EventHandler(Main plugin)
+		{
+			this.plugin = plugin;
+		}
 
-        public void OnSpawn(PlayerSpawnEvent ev)
-        {
+		public void OnSpawn(PlayerSpawnEvent ev)
+		{
 			Thread plyjoindelaythread = new Thread(new ThreadStart(() => new playerjoindelaythread(this.plugin, ev.Player)));
 			plyjoindelaythread.Start();
 		}
-    }
+	}
 }

@@ -6,22 +6,22 @@ using Smod2.EventHandlers;
 
 namespace defaultammo
 {
-    [PluginDetails(
-        author = "storm37000",
-        name = "Default Ammo",
-        description = "Sets custom default ammo amount.",
-        id = "s37k.defaultammo",
-        version = "1.0.2",
-        SmodMajor = 3,
-        SmodMinor = 1,
-        SmodRevision = 0
-        )]
-    class Main : Plugin
-    {
-        public override void OnDisable()
-        {
-            this.Info(this.Details.name + " has been disabled.");
-        }
+	[PluginDetails(
+		author = "storm37000",
+		name = "Default Ammo",
+		description = "Sets custom default ammo amount.",
+		id = "s37k.defaultammo",
+		version = "1.0.2",
+		SmodMajor = 3,
+		SmodMinor = 1,
+		SmodRevision = 0
+		)]
+	class Main : Plugin
+	{
+		public override void OnDisable()
+		{
+			this.Info(this.Details.name + " has been disabled.");
+		}
 		public override void OnEnable()
 		{
 			this.Info(this.Details.name + " has been enabled.");
@@ -59,15 +59,15 @@ namespace defaultammo
 		}
 
 		public override void Register()
-        {
-            foreach (int role in System.Enum.GetValues(typeof(Role)))
-            {
-                foreach (int ammo in System.Enum.GetValues(typeof(AmmoType)))
-                {
-                    this.AddConfig(new Smod2.Config.ConfigSetting((Role)role + "__AMMO_" + ammo, -1, Smod2.Config.SettingType.NUMERIC, true, ""));
-                }
-            }
-            this.AddEventHandler(typeof(IEventHandlerSpawn), new EventHandler(this), Priority.Highest);
-        }
-    }
+		{
+			foreach (int role in System.Enum.GetValues(typeof(Role)))
+			{
+				foreach (int ammo in System.Enum.GetValues(typeof(AmmoType)))
+				{
+					this.AddConfig(new Smod2.Config.ConfigSetting((Role)role + "__AMMO_" + ammo, -1, Smod2.Config.SettingType.NUMERIC, true, ""));
+				}
+			}
+			this.AddEventHandler(typeof(IEventHandlerSpawn), new EventHandler(this), Priority.Highest);
+		}
+	}
 }
