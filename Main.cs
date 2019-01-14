@@ -1,8 +1,6 @@
 ﻿using Smod2;
 using Smod2.API;
 using Smod2.Attributes;
-using Smod2.Events;
-using Smod2.EventHandlers;
 
 namespace defaultammo
 {
@@ -11,9 +9,9 @@ namespace defaultammo
 		name = "Default Ammo",
 		description = "Sets custom default ammo amount.",
 		id = "s37k.defaultammo",
-		version = "1.0.2",
+		version = "1.0.3",
 		SmodMajor = 3,
-		SmodMinor = 1,
+		SmodMinor = 2,
 		SmodRevision = 0
 		)]
 	class Main : Plugin
@@ -67,7 +65,7 @@ namespace defaultammo
 					this.AddConfig(new Smod2.Config.ConfigSetting((Role)role + "__AMMO_" + ammo, -1, Smod2.Config.SettingType.NUMERIC, true, ""));
 				}
 			}
-			this.AddEventHandler(typeof(IEventHandlerSpawn), new EventHandler(this), Priority.Highest);
+			this.AddEventHandlers(new EventHandler(this));
 		}
 	}
 }

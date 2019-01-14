@@ -1,6 +1,4 @@
-﻿using Smod2;
-using Smod2.API;
-using Smod2.Events;
+﻿using Smod2.Events;
 using Smod2.EventHandlers;
 using System.Threading;
 
@@ -15,7 +13,7 @@ namespace defaultammo
 			this.plugin = plugin;
 		}
 
-		public void OnSpawn(PlayerSpawnEvent ev)
+		public void OnSpawn(PlayerSpawnEvent ev) // change to PlayerSetRoleEvent 
 		{
 			Thread plyjoindelaythread = new Thread(new ThreadStart(() => new playerjoindelaythread(this.plugin, ev.Player)));
 			plyjoindelaythread.Start();
