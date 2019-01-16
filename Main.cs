@@ -9,7 +9,7 @@ namespace defaultammo
 		name = "Default Ammo",
 		description = "Sets custom default ammo amount.",
 		id = "s37k.defaultammo",
-		version = "1.0.3",
+		version = "1.0.4",
 		SmodMajor = 3,
 		SmodMinor = 2,
 		SmodRevision = 0

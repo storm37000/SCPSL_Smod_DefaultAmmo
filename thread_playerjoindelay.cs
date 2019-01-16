@@ -1,13 +1,12 @@
-﻿using System.Threading;
-using Smod2;
+﻿using System.Collections.Generic;
+using System.Threading;
 using Smod2.API;
-using Smod2.Events;
 
 namespace defaultammo
 {
 	class playerjoindelaythread
 	{
-		public playerjoindelaythread(Main plugin, Player Player)
+		public playerjoindelaythread(Dictionary<string, int> configs, Player Player)
 		{
 			Thread.Sleep(100);
 //			  plugin.Debug("=:BEFORE:= Player: " + Player.Name);
@@ -16,7 +15,7 @@ namespace defaultammo
 //			  plugin.Debug(" Ammo(COM15, P90): " + Player.GetAmmo((AmmoType)2));
 			foreach (int ind in System.Enum.GetValues(typeof(AmmoType)))
 			{
-				int ammo = plugin.GetConfigInt((Role)Player.TeamRole.Role + "__AMMO_" + ind);
+				int ammo = configs[(Role)Player.TeamRole.Role + "__AMMO_" + ind];
 				if (ammo >= 0)
 				{
 					Player.SetAmmo((AmmoType)ind, ammo);
