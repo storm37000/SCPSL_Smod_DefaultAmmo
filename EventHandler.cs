@@ -1,12 +1,12 @@
 ﻿using Smod2.Events;
 using Smod2.EventHandlers;
-using System.Threading;
 using Smod2.API;
 using System.Collections.Generic;
+using MEC;
 
 namespace defaultammo
 {
-	class EventHandler : IEventHandlerSpawn, IEventHandlerWaitingForPlayers
+	class EventHandler : IEventHandlerSetRole, IEventHandlerWaitingForPlayers
 	{
 		private Main plugin;
 		private Dictionary<string, int> configs = new Dictionary<string, int>();
@@ -38,10 +38,30 @@ namespace defaultammo
 			}
 		}
 
-		public void OnSpawn(PlayerSpawnEvent ev) // change to PlayerSetRoleEvent 
+		IEnumerator<float> setAmmo(Smod2.API.Player Player)
 		{
-			Thread plyjoindelaythread = new Thread(new ThreadStart(() => new playerjoindelaythread(configs, ev.Player)));
-			plyjoindelaythread.Start();
+			plugin.Debug("=:BEFORE:= Player: " + Player.Name);
+			plugin.Debug(" Ammo(Epsilon-11): " + Player.GetAmmo((AmmoType)0));
+			plugin.Debug(" Ammo(MP7, Logicer): " + Player.GetAmmo((AmmoType)1));
+			plugin.Debug(" Ammo(COM15, P90): " + Player.GetAmmo((AmmoType)2));
+			yield return Timing.WaitForOneFrame;
+			foreach (int ind in System.Enum.GetValues(typeof(AmmoType)))
+			{
+				int ammo = configs[(Role)Player.TeamRole.Role + "__AMMO_" + ind];
+				if (ammo >= 0)
+				{
+					Player.SetAmmo((AmmoType)ind, ammo);
+				}
+			}
+			plugin.Debug("=:AFTER:= Player: " + Player.Name);
+			plugin.Debug(" Ammo(Epsilon-11): " + Player.GetAmmo((AmmoType)0));
+			plugin.Debug(" Ammo(MP7, Logicer): " + Player.GetAmmo((AmmoType)1));
+			plugin.Debug(" Ammo(COM15, P90): " + Player.GetAmmo((AmmoType)2));
+		}
+
+		public void OnSetRole(PlayerSetRoleEvent ev)
+		{
+			Timing.RunCoroutine(setAmmo(ev.Player), Segment.FixedUpdate);
 		}
 	}
 }
