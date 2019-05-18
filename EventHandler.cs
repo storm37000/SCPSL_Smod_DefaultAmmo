@@ -18,6 +18,10 @@ namespace defaultammo
 
 		public void OnWaitingForPlayers(WaitingForPlayersEvent ev)
 		{
+			if (!plugin.UpToDate)
+			{
+				plugin.outdatedmsg();
+			}
 			configs.Clear();
 
 			foreach (int role in System.Enum.GetValues(typeof(Role)))
